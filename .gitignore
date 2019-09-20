@@ -2,3 +2,5 @@ eventbrite_keys.py
 google_keys.py
 __pycache__/*
 .ipynb_checkpoints/*
+flask_mvp/
+manifest.json
