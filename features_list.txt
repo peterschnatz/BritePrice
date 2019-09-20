@@ -39,8 +39,6 @@
    'free'
    'maximum_quantity'
    'on_sale_status'
-   'sales_start'
-   'sales_end'
    'include_fee'
  'listing_properties'
   'is_paid'
