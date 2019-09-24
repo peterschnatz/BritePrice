@@ -1,14 +1,8 @@
-/*alert("Hello from your Chrome extension!");
-
-let firstHref = $("a[href^='http']").eq(0).attr("href");
-
-console.log(firstHref);
-*/
-
+// Receive message from background and send event details back
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
-		if (request.message === "clicked_browser_action") {
-			
+		if (request.message === "get_data") {
+
 			let eventForm = document.getElementById('event_form');
 			let eventInputs = new FormData(eventForm);
 
@@ -26,8 +20,17 @@ chrome.runtime.onMessage.addListener(
 				'category': eventInputs.get('group-privacy_and_promotion-event_category'),
 				'subcategory': eventInputs.get('group-privacy_and_promotion-event_subcategory')
 			};
+			
+			console.log('made it here');
 
-			console.log(eventDetails);
+			if (typeof eventDetails != 'undefined') {
+				console.log('in the if');
+				chrome.runtime.sendMessage({"message": "retrieved_event_details", "eventDetails": eventDetails});
+			} else {
+				chrome.runtime.sendMessage({"message": "wrong_page"})
+			}
+			// Send response
+			
    		}
 	}
 )
