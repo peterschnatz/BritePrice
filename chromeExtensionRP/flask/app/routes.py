@@ -14,23 +14,7 @@ def form_example():
 # This is new stuff. Everything above works
 		data = request.get_json(force=True)
 
-
-		invtype = request.form.get('invtype')
-		restype = request.form.get('restype')
-		waitl = request.form.get('waitl')
-		feedec = request.form.get('decision')
-		refpol = request.form.get('ref')
-
-		template_dict = {
-			'invtype': invtype,
-			'restype': restype,
-			'waitl': waitl,
-			'feedec': feedec,
-			'refpol': refpol 
-		}
-		print(template_dict['invtype'])
-		print(restype)
-        
+		print(data)
         #### Model goes here 
 		print('here')
 		theResult = round(float(ModelIt(data)),2)

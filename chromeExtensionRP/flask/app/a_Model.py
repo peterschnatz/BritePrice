@@ -81,6 +81,39 @@ def ModelIt(event):
 	    event_data['online_event_0.0'] = 1
 
 
+
+	if (event['invtype'] == 'limited'):
+		event_data['inventory_type_limited'] = 1
+
+	if (event['restype'] == 'No'):
+		event_data['is_reserved_seating_0.0'] = 1
+
+	if (event['waitl'] == 'No'):
+		event_data['waitlist_available_0.0'] = 1
+
+	if (event['feedec'] == 'Not included'):
+		event_data['include_fee_0.0'] = 1
+
+	
+	if (event['refpol'] == 'no refunds'):
+		event_data['refund_policy_no_refunds'] = 1
+
+	elif (event['refpol'] == '1 day'):
+		event_data['refund_policy_flexible'] = 1
+
+	elif (event['refpol'] == '7 days'):
+		event_data['refund_policy_moderate'] = 1
+
+	elif (event['refpol'] == 'No policy'):
+		event_data['refund_policy_not_defined'] = 1
+
+
+	print('start')
+	print(event_data['refund_policy_moderate'])
+	print(event_data['refund_policy_flexible'])
+	print(event_data['refund_policy_no_refunds'])
+	print('end')
+
 	# Impute some values
 	event_data['is_paid_0.0'] = 0
 	event_data['shareable_0.0'] = 0

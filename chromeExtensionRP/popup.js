@@ -1,38 +1,111 @@
 // Extension begins to run by clicking icon
 chrome.runtime.sendMessage({"message": "popup_request"});
 
-// Receive event details from background and fill popup.html
+
+
+//Receive event details from background and fill popup.html
 chrome.runtime.onMessage.addListener(
 	function(request,sender,sendResponse) {
-		if (request.message === "ready_to_post") {
+		if (request.message === "get_ticket_info") {
 
-			document.getElementById("title").innerHTML = request.eventDetails.title;
+// This begins the new part
+      let inventoryType = ['Limited','Reserved'];
+      let optionsInv = "<option value=''>Choose...</option>"
+      for (let i = 0; i < inventoryType.length; i++) {
+        optionsInv += "<option>"+ inventoryType[i] +"</option>";
+      }
+      document.getElementById("inventory").innerHTML = optionsInv;
 
-			console.log(JSON.stringify(request.eventDetails))
-			xhr = new XMLHttpRequest();
-			xhr.open("POST","http://localhost:5000");
-			//xhr.open("POST","http://18.219.247.228:5000")
-			xhr.send(JSON.stringify(request.eventDetails));
+      let reservationType = ['Yes','No'];
+      let optionsRes = "<option value=''>Choose...</option>"
+      for (let i = 0; i < reservationType.length; i++) {
+        optionsRes += "<option>"+ reservationType[i] +"</option>";
+      }
+      document.getElementById("reserved").innerHTML = optionsRes;
+
+      let waitlistType = ['Yes','No'];
+      let optionsWL = "<option value=''>Choose...</option>"
+      for (let i = 0; i < waitlistType.length; i++) {
+        optionsWL += "<option>"+ waitlistType[i] +"</option>";
+      }
+      document.getElementById("waitlist").innerHTML = optionsWL;
 
 
-			xhr.onreadystatechange = function() {
-    			if (xhr.readyState == 4 && xhr.status == 200) {
-    				 //Request was successful
-    				//let jsonResponse = JSON.parse(xhr.responseText)
-    				console.log(xhr.response)
-    				document.getElementById("price").innerHTML = xhr.response
-			
+      let feesType = ['Included','Not included'];
+      let optionsFee = "<option value=''>Choose...</option>"
+      for (let i = 0; i < feesType.length; i++) {
+        optionsFee += "<option>"+ feesType[i] +"</option>";
+      }
+      document.getElementById("fees").innerHTML = optionsFee;
 
-    			}
-			};
-			//document.getElementById("price").innerHTML = 'New stuff';
-			//document.getElementById("title").innerHTML = request.eventDetails.title;
+      let refType = ['No refunds','1 day','7 days','30 days','No policy'];
+      let optionsRef = "<option value=''>Choose...</option>"
+      for (let i = 0; i < refType.length; i++) {
+        optionsRef += "<option>"+ refType[i] +"</option>";
+      }
+      document.getElementById("refunds").innerHTML = optionsRef;
 
 
 
-		}
-	}
+      let form = document.getElementById('tickets');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        let invtype = document.getElementById('inventory').value;
+        let restype = document.getElementById('reserved').value;
+        let waitl = document.getElementById('waitlist').value;
+        let feedec = document.getElementById('fees').value;
+        let refpol = document.getElementById('refunds').value;
+        let ticket_dict = {
+          'invtype': invtype,
+          'restype': restype,
+          'waitl': waitl,
+          'feedec': feedec,
+          'refpol': refpol
+        }
+
+        chrome.runtime.sendMessage({"message": "send_to_model","ticketInfo": ticket_dict,"eventDetails": request.eventDetails});
+      });
+    }});
+
+
+
+      // console.log(template_dict);
+      
+// This ends the new part
+
+function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
+}
+      
+chrome.runtime.onMessage.addListener(
+  function(request,sender,sendResponse) {
+    if (request.message === "ready_to_post") {
+      console.log(request.suggestedPrice);
+      console.log("that's the price");
+
+      document.getElementById("suggest").innerHTML = "Suggested price for your event,"
+      document.getElementById("price").innerHTML = request.suggestedPrice;
+      document.getElementById("title").innerHTML = request.eventDetails.title;  
+
+
+      // document.getElementById("tickets").addEventListener('submit',function() {
+      //   setTimeout(function (){
+      //     console.log('in the click')
+
+      //     setTimeout(function (){
+      //       let priceNew = request.suggestedPrice
+      //       document.getElementById("price").innerHTML = priceNew;
+      //       console.log('this one' + priceNew)
+      //     },2000)
+
+      //   }, 2000);
+        
+      // })
+    }
+  }
 );
-
-
 

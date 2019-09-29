@@ -24,7 +24,6 @@ chrome.runtime.onMessage.addListener(
 			console.log('made it here');
 
 			if (typeof eventDetails != 'undefined') {
-				console.log('in the if');
 				chrome.runtime.sendMessage({"message": "retrieved_event_details", "eventDetails": eventDetails});
 			} else {
 				chrome.runtime.sendMessage({"message": "wrong_page"})
