@@ -71,8 +71,6 @@ start_tz_America/Los_Angeles
 start_tz_America/New_York
 start_tz_America/North_Dakota/Center
 start_tz_America/North_Dakota/New_Salem
-start_tz_America/Phoenix
-start_tz_America/Toronto
 subcategory_id_-999.0
 subcategory_id_1001.0
 subcategory_id_1002.0
@@ -434,11 +432,10 @@ start_MOY_8
 start_MOY_9
 start_MOY_10
 start_MOY_11
+start_year_2015
 start_year_2016
 start_year_2017
 start_year_2018
-start_year_2019
-start_year_2020
 end_hour_0
 end_hour_1
 end_hour_2
@@ -512,14 +509,3 @@ end_MOY_11
 end_year_2016
 end_year_2017
 end_year_2018
-end_year_2019
-end_year_2020
-end_year_2021
-end_year_2022
-end_year_2024
-end_year_2025
-end_year_2026
-end_year_2027
-end_year_2028
-end_year_2029
-end_year_2030

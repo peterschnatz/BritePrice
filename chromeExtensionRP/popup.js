@@ -45,6 +45,13 @@ chrome.runtime.onMessage.addListener(
       }
       document.getElementById("refunds").innerHTML = optionsRef;
 
+      let tixnum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+      let optionsMaxtix = "<option value=''>Choose...</option>"
+      for (let i = 0; i < tixnum.length; i++) {
+        optionsMaxtix += "<option>"+ tixnum[i] +"</option>";
+      }
+      document.getElementById("maxtix").innerHTML = optionsMaxtix;
+
 
 
       let form = document.getElementById('tickets');
@@ -55,12 +62,14 @@ chrome.runtime.onMessage.addListener(
         let waitl = document.getElementById('waitlist').value;
         let feedec = document.getElementById('fees').value;
         let refpol = document.getElementById('refunds').value;
+        let maxtix = document.getElementById('maxtix').value
         let ticket_dict = {
           'invtype': invtype,
           'restype': restype,
           'waitl': waitl,
           'feedec': feedec,
-          'refpol': refpol
+          'refpol': refpol,
+          'maxtix': maxtix
         }
 
         chrome.runtime.sendMessage({"message": "send_to_model","ticketInfo": ticket_dict,"eventDetails": request.eventDetails});

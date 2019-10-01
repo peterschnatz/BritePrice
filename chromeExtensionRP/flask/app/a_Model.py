@@ -4,6 +4,8 @@ def ModelIt(event):
 	import pandas as pd
 	import datetime as dt
 	import pickle
+	import sklearn
+	from joblib import load
 
 
 	# define an empty list
@@ -21,7 +23,7 @@ def ModelIt(event):
 	# initiate data series
 	a = np.zeros(shape=(1,len(columns)))
 	event_data = pd.DataFrame(a,columns=columns)
-
+	print('event_data shape: ' + str(event_data.shape))
 	created_dt = pd.Timestamp.now()
 	published_dt = pd.Timestamp.now() + dt.timedelta(minutes=5)
 
@@ -37,13 +39,13 @@ def ModelIt(event):
 	event_data['start_DOW_' + str(start_local_dt.dayofweek)] = start_local_dt.dayofweek
 	event_data['start_DOM_' + str(start_local_dt.day)] = start_local_dt.day
 	event_data['start_MOY_' + str(start_local_dt.month)] = start_local_dt.month
-	event_data['start_year_' + str(start_local_dt.year)] = start_local_dt.year
+	# event_data['start_year_' + str(start_local_dt.year)] = start_local_dt.year
 
 	event_data['end_hour_' + str(end_local_dt.hour)] = end_local_dt.hour
 	event_data['end_DOW_' + str(end_local_dt.dayofweek)] = end_local_dt.dayofweek
 	event_data['end_DOM_' + str(end_local_dt.day)] = end_local_dt.day
 	event_data['end_MOY_' + str(end_local_dt.month)] = end_local_dt.month
-	event_data['end_year_' + str(end_local_dt.year)] = end_local_dt.year
+	# event_data['end_year_' + str(end_local_dt.year)] = end_local_dt.year
 
 
 	event_data['created_to_publish'] = (published_dt - created_dt).total_seconds()//60
@@ -108,12 +110,14 @@ def ModelIt(event):
 		event_data['refund_policy_not_defined'] = 1
 
 
+	event_data['maximum_quantity'] = event['maxtix']
+
 	print('start')
 	print(event_data['refund_policy_moderate'])
 	print(event_data['refund_policy_flexible'])
 	print(event_data['refund_policy_no_refunds'])
 	print('end')
-
+	print('another end')
 	# Impute some values
 	event_data['is_paid_0.0'] = 0
 	event_data['shareable_0.0'] = 0
@@ -121,14 +125,13 @@ def ModelIt(event):
 	event_data['donation_0.0'] = 0
 	event_data['on_sale_status_SOLD_OUT'] = 1
 
-
 	pkl_filename = './app/RightPrice_model.pkl'
 
 	with open(pkl_filename, 'rb') as file:
 	    pickle_model = pickle.load(file)
-
+	    print('got model')
 	Ypredict = pickle_model.predict(event_data)
 	# print("Suggested price: $%.2f" % float(Ypredict))
-
+	print('predicted')
 	return Ypredict
 		# return result
