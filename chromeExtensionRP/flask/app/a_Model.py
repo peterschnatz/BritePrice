@@ -84,11 +84,11 @@ def ModelIt(event):
 
 
 
-	if (event['invtype'] == 'limited'):
-		event_data['inventory_type_limited'] = 1
+	# if (event['invtype'] == 'limited'):
+	# 	event_data['inventory_type_limited'] = 1
 
-	if (event['restype'] == 'No'):
-		event_data['is_reserved_seating_0.0'] = 1
+	# if (event['restype'] == 'No'):
+	# 	event_data['is_reserved_seating_0.0'] = 1
 
 	if (event['waitl'] == 'No'):
 		event_data['waitlist_available_0.0'] = 1

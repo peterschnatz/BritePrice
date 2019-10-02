@@ -9,19 +9,19 @@ chrome.runtime.onMessage.addListener(
 		if (request.message === "get_ticket_info") {
 
 // This begins the new part
-      let inventoryType = ['Limited','Reserved'];
-      let optionsInv = "<option value=''>Choose...</option>"
-      for (let i = 0; i < inventoryType.length; i++) {
-        optionsInv += "<option>"+ inventoryType[i] +"</option>";
-      }
-      document.getElementById("inventory").innerHTML = optionsInv;
+      // let inventoryType = ['Limited','Reserved'];
+      // let optionsInv = "<option value=''>Choose...</option>"
+      // for (let i = 0; i < inventoryType.length; i++) {
+      //   optionsInv += "<option>"+ inventoryType[i] +"</option>";
+      // }
+      // document.getElementById("inventory").innerHTML = optionsInv;
 
-      let reservationType = ['Yes','No'];
-      let optionsRes = "<option value=''>Choose...</option>"
-      for (let i = 0; i < reservationType.length; i++) {
-        optionsRes += "<option>"+ reservationType[i] +"</option>";
-      }
-      document.getElementById("reserved").innerHTML = optionsRes;
+      // let reservationType = ['Yes','No'];
+      // let optionsRes = "<option value=''>Choose...</option>"
+      // for (let i = 0; i < reservationType.length; i++) {
+      //   optionsRes += "<option>"+ reservationType[i] +"</option>";
+      // }
+      // document.getElementById("reserved").innerHTML = optionsRes;
 
       let waitlistType = ['Yes','No'];
       let optionsWL = "<option value=''>Choose...</option>"
@@ -45,7 +45,7 @@ chrome.runtime.onMessage.addListener(
       }
       document.getElementById("refunds").innerHTML = optionsRef;
 
-      let tixnum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+      let tixnum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
       let optionsMaxtix = "<option value=''>Choose...</option>"
       for (let i = 0; i < tixnum.length; i++) {
         optionsMaxtix += "<option>"+ tixnum[i] +"</option>";
@@ -57,15 +57,15 @@ chrome.runtime.onMessage.addListener(
       let form = document.getElementById('tickets');
       form.addEventListener('submit', function(e){
         e.preventDefault();
-        let invtype = document.getElementById('inventory').value;
-        let restype = document.getElementById('reserved').value;
+        // let invtype = document.getElementById('inventory').value;
+        // let restype = document.getElementById('reserved').value;
         let waitl = document.getElementById('waitlist').value;
         let feedec = document.getElementById('fees').value;
         let refpol = document.getElementById('refunds').value;
         let maxtix = document.getElementById('maxtix').value
         let ticket_dict = {
-          'invtype': invtype,
-          'restype': restype,
+          // 'invtype': invtype,
+          // 'restype': restype,
           'waitl': waitl,
           'feedec': feedec,
           'refpol': refpol,
