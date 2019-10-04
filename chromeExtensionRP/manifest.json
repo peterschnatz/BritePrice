@@ -1,0 +1,39 @@
+ {
+  "manifest_version": 2,
+  "name": "BritePrice",
+  "version": "1.0",
+
+  "description": "Suggests ticket price for Eventbrite.",
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.eventbrite.com/create",
+        "https://www.eventbrite.com/edit*"
+      ],
+      "js": ["jquery-3.4.1.min.js", "content.js"]
+    }
+  ],
+
+  "page_action": {
+    "default_icon": "images/britepricelogo.png",
+    "default_title": "RightPrice",
+    "default_popup": "popup.html"
+  },
+
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false,
+    "default_popup": "popup.html"
+  },
+  
+
+  "permissions": [
+    "tabs",
+    "declarativeContent",
+    "storage",
+    "http://18.219.247.228:5000/*"
+  ]
+
+}
