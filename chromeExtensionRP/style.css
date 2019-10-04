@@ -1,0 +1,32 @@
+body {
+  margin: 0px 0px 0px 0px !important;
+}
+
+.bp-image {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  background-image: url("/images/banner2.png");
+
+  /* Set a specific height */
+  height: 100%;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.price_container {
+  /*display: none;*/
+  /*display: block;*/
+  /*left: 0;*/
+  /*position: absolute;*/
+  /*top: 34px;*/
+  /*width: 210px; */
+  height: 50px;
+  width: 500px;
+  /*box-shadow: 0 3px 10px hsl(0, 0%, 30%);*/
+  font-family: 'Open Sans', sans-serif;
+  /*font-family: Georgia, Helvetica, Arial, sans-serif;*/
+  /*box-sizing: border-box;*/
+}

@@ -6,7 +6,7 @@
  -->
 <html>
   <head>
-    <title>Getting Started Extension's Popup</title>
+    <title>BritePrice Popup</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
     <style>
       body {
@@ -47,61 +47,57 @@
 
 
  
-      <h2>Hello EventBrite User!</h2>
-      <div>
-        <form id='tickets' method="POST">
-          <div>
-<!--             <div class="form-item">
-              <label for="inventory">Inventory Type</label>
-                <select name="invtype" id="inventory" required></select>
-            </div>
-            <br>
+  <h2>Hello EventBrite User!</h2>
+  <h3>
+  We need a bit more information about your 
+  event to get you the best price!
+  </h3>
+    <div>
+      <form id='tickets' method="POST">
+        <div class="price_container">
 
-            <div class="form-item">
-              <label for="reserved">Reserved Seating</label>
-                <select name="restype" id="reserved" required></select>
-            </div>
-            <br> -->
-
-            <div class="form-item">
-              <label for="waitlist">Waitlist</label>
-                <select name="waitl" id="waitlist" required></select>
-            </div>
-            <br>
-
-            <div class="form-item">
-              <label for="fees">Fees Included in Price</label>
-                <select name="decision" id="fees" required></select>
-            </div>
-            <br>
-
-            <div class="form-item">
-              <label for="refunds">Refund Policy</label>
-                <select name="ref" id="refunds" required></select>
-            </div>
-            <br>
-            <div class="form-item">
-              <label for="maxtix">Maximum Tickets Per Order</label>
-                <select name="tixnum" id="maxtix" required></select>
-            </div>
-            <br>
+          <div class="form-item">
+            <label for="waitlist">Waitlist</label>
+              <select name="waitl" id="waitlist" required></select>
           </div>
-          <input type="submit" value="Submit"><br>
-        </form>
-    </div>
+          <br>
+
+          <div class="form-item">
+            <label for="fees">Fees Included in Price</label>
+              <select name="decision" id="fees" required></select>
+          </div>
+          <br>
+
+          <div class="form-item">
+            <label for="refunds">Refund Policy</label>
+              <select name="ref" id="refunds" required></select>
+          </div>
+          <br>
+
+          <div class="form-item">
+            <label for="maxtix">Maximum Tickets Per Order</label>
+              <select name="tixnum" id="maxtix" required></select>
+          </div>
+          <br>
+        
+        </div>
+      <input type="submit" value="Submit"><br>
+    </form>
+  </div>
 
 
 
-    <h2>BritePrice</h2>
-    <h3 id="suggest"></h3>
-    <h2 id="title"></h2>
-    <span class="message"></span>
-    <hr>
-    <div id="price" class="inputbox">
-      <h2 id="price"></h2>
+  <h2>BritePrice</h2>
+  <h3 id="suggest"></h3>
+  <h2 id="title"></h2>
+  <span class="message"></span>
+  <hr>
+  <h1 id="price"></h1>
 
-    <script src="jquery-3.4.1.min.js"></script>
-    <script src="popup.js"></script>
+  <div id="price" class="inputbox">
+
+  <script src="jquery-3.4.1.min.js"></script>
+  <script src="popup.js"></script>
 
     </div>
   </body>
