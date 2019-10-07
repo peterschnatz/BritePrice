@@ -3,25 +3,11 @@ chrome.runtime.sendMessage({"message": "popup_request"});
 
 
 
-//Receive event details from background and fill popup.html
+//Receive event details from background and get ticket info from user then send to background to send to model
 chrome.runtime.onMessage.addListener(
 	function(request,sender,sendResponse) {
 		if (request.message === "get_ticket_info") {
 
-// This begins the new part
-      // let inventoryType = ['Limited','Reserved'];
-      // let optionsInv = "<option value=''>Choose...</option>"
-      // for (let i = 0; i < inventoryType.length; i++) {
-      //   optionsInv += "<option>"+ inventoryType[i] +"</option>";
-      // }
-      // document.getElementById("inventory").innerHTML = optionsInv;
-
-      // let reservationType = ['Yes','No'];
-      // let optionsRes = "<option value=''>Choose...</option>"
-      // for (let i = 0; i < reservationType.length; i++) {
-      //   optionsRes += "<option>"+ reservationType[i] +"</option>";
-      // }
-      // document.getElementById("reserved").innerHTML = optionsRes;
 
       let waitlistType = ['Yes','No'];
       let optionsWL = "<option value=''>Choose...</option>"
@@ -57,15 +43,11 @@ chrome.runtime.onMessage.addListener(
       let form = document.getElementById('tickets');
       form.addEventListener('submit', function(e){
         e.preventDefault();
-        // let invtype = document.getElementById('inventory').value;
-        // let restype = document.getElementById('reserved').value;
         let waitl = document.getElementById('waitlist').value;
         let feedec = document.getElementById('fees').value;
         let refpol = document.getElementById('refunds').value;
         let maxtix = document.getElementById('maxtix').value
         let ticket_dict = {
-          // 'invtype': invtype,
-          // 'restype': restype,
           'waitl': waitl,
           'feedec': feedec,
           'refpol': refpol,
@@ -78,18 +60,15 @@ chrome.runtime.onMessage.addListener(
 
 
 
-      // console.log(template_dict);
-      
-// This ends the new part
+// function wait(ms){
+//    var start = new Date().getTime();
+//    var end = start;
+//    while(end < start + ms) {
+//      end = new Date().getTime();
+//   }
+// }
 
-function wait(ms){
-   var start = new Date().getTime();
-   var end = start;
-   while(end < start + ms) {
-     end = new Date().getTime();
-  }
-}
-      
+// Display model suggested price to user      
 chrome.runtime.onMessage.addListener(
   function(request,sender,sendResponse) {
     if (request.message === "ready_to_post") {
@@ -99,21 +78,6 @@ chrome.runtime.onMessage.addListener(
       document.getElementById("suggest").innerHTML = "Suggested price for your event,"
       document.getElementById("price").innerHTML = request.suggestedPrice;
       document.getElementById("title").innerHTML = request.eventDetails.title;  
-
-
-      // document.getElementById("tickets").addEventListener('submit',function() {
-      //   setTimeout(function (){
-      //     console.log('in the click')
-
-      //     setTimeout(function (){
-      //       let priceNew = request.suggestedPrice
-      //       document.getElementById("price").innerHTML = priceNew;
-      //       console.log('this one' + priceNew)
-      //     },2000)
-
-      //   }, 2000);
-        
-      // })
     }
   }
 );
