@@ -60,7 +60,8 @@ def ModelIt(event):
 
 
 	first_two_zip_digits = event['zip'][:2]
-	event_data['postal_region_'+first_two_zip_digits] = first_two_zip_digits
+	if first_two_zip_digits != 'on':
+		event_data['postal_region_'+first_two_zip_digits] = first_two_zip_digits
 
 	if event['format'] == '':
 	    event_data['format_id_-999.0'] = 1
@@ -77,18 +78,11 @@ def ModelIt(event):
 	else:
 	    event_data['subcategory_id_' + event['subcategory'] + '.0'] = event['subcategory']
 
-	if (event['city'] == '') & (event['state'] == '') & (event['zip'] == ''):
+	if (event['online'] == 0):
 	    event_data['online_event_0.0'] = 0
 	else:
 	    event_data['online_event_0.0'] = 1
 
-
-
-	# if (event['invtype'] == 'limited'):
-	# 	event_data['inventory_type_limited'] = 1
-
-	# if (event['restype'] == 'No'):
-	# 	event_data['is_reserved_seating_0.0'] = 1
 
 	if (event['waitl'] == 'No'):
 		event_data['waitlist_available_0.0'] = 1
@@ -126,11 +120,19 @@ def ModelIt(event):
 	event_data['on_sale_status_SOLD_OUT'] = 1
 
 	pkl_filename = './app/RightPrice_model.pkl'
+	scaler_pkl = './app/StandardScaler.pkl'
 
 	with open(pkl_filename, 'rb') as file:
 	    pickle_model = pickle.load(file)
 	    print('got model')
-	Ypredict = pickle_model.predict(event_data)
+
+	with open(scaler_pkl, 'rb') as file:
+	    pickle_scaler = pickle.load(file)
+	    print('got scaler')
+
+	event_data_scaled = pickle_scaler.transform(event_data)
+	print('****Transformed****')
+	Ypredict = pickle_model.predict(event_data_scaled)
 	# print("Suggested price: $%.2f" % float(Ypredict))
 	print('predicted')
 	return Ypredict

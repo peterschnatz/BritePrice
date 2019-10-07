@@ -5,11 +5,17 @@
 
   "description": "Suggests ticket price for Eventbrite.",
 
+  "icons": {
+    "128": "images/britepricelogo.png"
+  },
+
   "content_scripts": [
     {
       "matches": [
-        "https://www.eventbrite.com/create",
-        "https://www.eventbrite.com/edit*"
+        "https://www.eventbrite.com/create*",
+        "http://www.eventbrite.com/create*",
+        "https://www.eventbrite.com/edit*",
+        "http://www.eventbrite.com/edit*"
       ],
       "js": ["jquery-3.4.1.min.js", "content.js"]
     }
@@ -33,6 +39,10 @@
     "tabs",
     "declarativeContent",
     "storage",
+    "https://www.eventbrite.com/create*",
+    "http://www.eventbrite.com/create*",
+    "https://www.eventbrite.com/edit*",
+    "http://www.eventbrite.com/edit*",
     "http://18.219.247.228:5000/*"
   ]
 

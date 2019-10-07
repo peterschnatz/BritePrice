@@ -8,97 +8,70 @@
   <head>
     <title>BritePrice Popup</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
-    <style>
-      body {
-        font-family: 'Open Sans', sans-serif;
-        font-size: 80%;
-        text-align:center;
-      }
-      h1{
-        font-weight: 300;
-      }
-      .inputbox{
-        width:400px;
-      }
-      .inputbox span{
-        display:inline-block;
-        width:50px;
-      }
-      .inputbox input{
-        display:inline-block;
-        width:280px;
-      }
-      .inputbox button{
-        display:inline-block;
-        width:50px;
-      }
-    </style>
-
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
-     -->
-
+    <link rel="stylesheet" type="text/css" href="./style.css">
   </head>
 
   <body>
+    <header id="main_header">
+      <div class="header_container">
+        <h1>BritePrice</h1>
+      </div>
+    </header>
 
+    <div class="ticket_suggest">
+      <h2 class="title_container">Hello EventBrite User!</h2>
+      <h3>
+      We need a bit more information about your 
+      event to get you the best price!
+      </h3>
 
- 
-  <h2>Hello EventBrite User!</h2>
-  <h3>
-  We need a bit more information about your 
-  event to get you the best price!
-  </h3>
-    <div>
-      <form id='tickets' method="POST">
-        <div class="price_container">
+        <div>
+          <form id='tickets' method="POST" class="my-form">
+            <div class="form-group">
 
-          <div class="form-item">
-            <label for="waitlist">Waitlist</label>
-              <select name="waitl" id="waitlist" required></select>
-          </div>
-          <br>
+              <div class="form-item1">
+                <label for="waitlist">Waitlist</label>
+                  <select name="waitl" id="waitlist" required></select>
+              </div>
+              <!-- <br> -->
 
-          <div class="form-item">
-            <label for="fees">Fees Included in Price</label>
-              <select name="decision" id="fees" required></select>
-          </div>
-          <br>
+              <div class="form-item1">
+                <label for="fees">Fees Included in Price</label>
+                  <select name="decision" id="fees" required></select>
+              </div>
+              <!-- <br> -->
 
-          <div class="form-item">
-            <label for="refunds">Refund Policy</label>
-              <select name="ref" id="refunds" required></select>
-          </div>
-          <br>
+              <div class="form-item2">
+                <label for="refunds">Refund Policy</label>
+                  <select name="ref" id="refunds" required></select>
+              </div>
+              <!-- <br> -->
 
-          <div class="form-item">
-            <label for="maxtix">Maximum Tickets Per Order</label>
-              <select name="tixnum" id="maxtix" required></select>
-          </div>
-          <br>
-        
-        </div>
-      <input type="submit" value="Submit"><br>
-    </form>
-  </div>
+              <div class="form-item2">
+                <label for="maxtix">Maximum Tickets Per Order</label>
+                  <select name="tixnum" id="maxtix" required></select>
+              </div>
+              <!-- <br> -->
+            
+              <div class="clr"></div>
+            </div>
+          <button type="submit" value="Submit" class="button" id="submit_button">Submit</button>
+        </form>
+      </div>
 
+      <div class="spacer"></div>
 
+      <div class="results">
+        <h3 id="suggest"></h3>
+        <h2 id="title"></h2>
+        <span class="message"></span>
+        <h1 id="price" class="suggested"></h1>
+      </div>
 
-  <h2>BritePrice</h2>
-  <h3 id="suggest"></h3>
-  <h2 id="title"></h2>
-  <span class="message"></span>
-  <hr>
-  <h1 id="price"></h1>
+      <script src="jquery-3.4.1.min.js"></script>
+      <script src="popup.js"></script>
 
-  <div id="price" class="inputbox">
-
-  <script src="jquery-3.4.1.min.js"></script>
-  <script src="popup.js"></script>
-
+      </div>
     </div>
   </body>
 </html>

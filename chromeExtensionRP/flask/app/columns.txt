@@ -113,7 +113,6 @@ subcategory_id_3018.0
 subcategory_id_3999.0
 subcategory_id_4001.0
 subcategory_id_4002.0
-subcategory_id_4003.0
 subcategory_id_4004.0
 subcategory_id_4005.0
 subcategory_id_4006.0
@@ -272,6 +271,14 @@ on_sale_status_AVAILABLE
 on_sale_status_NOT_YET_ON_SALE
 on_sale_status_SOLD_OUT
 include_fee_0.0
+postal_region_01
+postal_region_02
+postal_region_03
+postal_region_04
+postal_region_05
+postal_region_06
+postal_region_07
+postal_region_08
 postal_region_10
 postal_region_11
 postal_region_12

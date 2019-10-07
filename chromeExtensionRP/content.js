@@ -20,17 +20,27 @@ chrome.runtime.onMessage.addListener(
 				'category': eventInputs.get('group-privacy_and_promotion-event_category'),
 				'subcategory': eventInputs.get('group-privacy_and_promotion-event_subcategory')
 			};
+
+			if ((document.getElementById('create_location_content').getElementsByTagName('span')[0]) || (eventDetails['zip'] === "")){
+				eventDetails['online'] = 1;
+			} else {
+				eventDetails['online'] = 0;
+			}
+
+			if (eventDetails['zip'] === "") {
+				eventDetails['zip'] = 'online'
+			}
 			
+			console.log(eventDetails['online'])
 			console.log('made it here');
 
-			if (typeof eventDetails != 'undefined') {
+			if (typeof eventDetails !== 'undefined') {
 				chrome.runtime.sendMessage({"message": "retrieved_event_details", "eventDetails": eventDetails});
 			} else {
 				chrome.runtime.sendMessage({"message": "wrong_page"})
 			}
-			// Send response
 			
    		}
 	}
-)
+);
 
