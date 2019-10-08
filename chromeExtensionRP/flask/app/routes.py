@@ -9,7 +9,7 @@ def form_example():
 	if request.method == 'POST':  #this block is only entered when the form is submitted
 		# print(request)
 
-
+		print("in routes")
 
 # This is new stuff. Everything above 
 		data = request.get_json(force=True)

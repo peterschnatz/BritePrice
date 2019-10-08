@@ -35,17 +35,23 @@ def ModelIt(event):
 	event_data['start_DOY'] = start_local_dt.dayofyear
 	event_data['end_DOY'] = end_local_dt.dayofyear
 
-	event_data['start_hour_' + str(start_local_dt.hour)] = start_local_dt.hour
-	event_data['start_DOW_' + str(start_local_dt.dayofweek)] = start_local_dt.dayofweek
-	event_data['start_DOM_' + str(start_local_dt.day)] = start_local_dt.day
-	event_data['start_MOY_' + str(start_local_dt.month)] = start_local_dt.month
-	# event_data['start_year_' + str(start_local_dt.year)] = start_local_dt.year
+	if (start_local_dt.hour != 23):
+		event_data['start_hour_' + str(start_local_dt.hour)] = start_local_dt.hour
+	if (start_local_dt.dayofweek != 6):
+		event_data['start_DOW_' + str(start_local_dt.dayofweek)] = start_local_dt.dayofweek
+	if (start_local_dt.day != 31):
+		event_data['start_DOM_' + str(start_local_dt.day)] = start_local_dt.day
+	if (start_local_dt.month != 12):
+		event_data['start_MOY_' + str(start_local_dt.month)] = start_local_dt.month
 
-	event_data['end_hour_' + str(end_local_dt.hour)] = end_local_dt.hour
-	event_data['end_DOW_' + str(end_local_dt.dayofweek)] = end_local_dt.dayofweek
-	event_data['end_DOM_' + str(end_local_dt.day)] = end_local_dt.day
-	event_data['end_MOY_' + str(end_local_dt.month)] = end_local_dt.month
-	# event_data['end_year_' + str(end_local_dt.year)] = end_local_dt.year
+	if (end_local_dt.hour != 23):
+		event_data['end_hour_' + str(end_local_dt.hour)] = end_local_dt.hour
+	if (end_local_dt.dayofweek != 6):
+		event_data['end_DOW_' + str(end_local_dt.dayofweek)] = end_local_dt.dayofweek
+	if (end_local_dt.day != 31):
+		event_data['end_DOM_' + str(end_local_dt.day)] = end_local_dt.day
+	if (end_local_dt.month != 12):
+		event_data['end_MOY_' + str(end_local_dt.month)] = end_local_dt.month
 
 
 	event_data['created_to_publish'] = (published_dt - created_dt).total_seconds()//60
@@ -53,27 +59,24 @@ def ModelIt(event):
 	event_data['start_to_end'] = (end_utc_dt - start_utc_dt).total_seconds()//60
 
 
-
 	event_data['start_tz_' + event['timeZone']] = 1
 
 
-
-
 	first_two_zip_digits = event['zip'][:2]
-	if first_two_zip_digits != 'on':
+	if (first_two_zip_digits != 'on'):
 		event_data['postal_region_'+first_two_zip_digits] = first_two_zip_digits
 
-	if event['format'] == '':
+	if (event['format'] == ''):
 	    event_data['format_id_-999.0'] = 1
 	else:
 	    event_data['format_id_' + event['format'] + '.0'] = event['format']
 	    
-	if event['category'] == '':
+	if (event['category'] == ''):
 	    event_data['category_id_-999.0'] = 1
 	else:
 	    event_data['category_id_' + event['category'] + '.0'] = event['category']
 
-	if event['subcategory'] == '':
+	if (event['subcategory'] == ''):
 	    event_data['subcategory_id_-999.0'] = 1
 	else:
 	    event_data['subcategory_id_' + event['subcategory'] + '.0'] = event['subcategory']
@@ -106,12 +109,6 @@ def ModelIt(event):
 
 	event_data['maximum_quantity'] = event['maxtix']
 
-	print('start')
-	print(event_data['refund_policy_moderate'])
-	print(event_data['refund_policy_flexible'])
-	print(event_data['refund_policy_no_refunds'])
-	print('end')
-	print('another end')
 	# Impute some values
 	event_data['is_paid_0.0'] = 0
 	event_data['shareable_0.0'] = 0

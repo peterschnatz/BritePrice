@@ -20,8 +20,8 @@ chrome.runtime.onMessage.addListener(
 				'category': eventInputs.get('group-privacy_and_promotion-event_category'),
 				'subcategory': eventInputs.get('group-privacy_and_promotion-event_subcategory')
 			};
-
-			if ((document.getElementById('create_location_content').getElementsByTagName('span')[0]) || (eventDetails['zip'] === "")){
+			console.log(document.getElementById('create_location_content').getElementsByTagName('span')[0].innerHTML.indexOf('online'))
+			if ((document.getElementById('create_location_content').getElementsByTagName('span')[0].innerHTML.indexOf('online') !== -1) || (eventDetails['zip'] === "")){
 				eventDetails['online'] = 1;
 			} else {
 				eventDetails['online'] = 0;

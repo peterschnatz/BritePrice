@@ -35,10 +35,10 @@ chrome.runtime.onMessage.addListener(
 
 			const fullDetails = {...request.eventDetails, ...request.ticketInfo};
 
-            const proxyurl = "https://cors-anywhere.herokuapp.com/"
-			// const proxyurl = "https://thawing-ridge-91933.herokuapp.com/"
+            // const proxyurl = "https://cors-anywhere.herokuapp.com/"
+			const proxyurl = "https://thawing-ridge-91933.herokuapp.com/"
 			const url = "http://18.219.247.228"
-
+            console.log(fullDetails)
 			fetch(proxyurl + url, {
                 mode: 'cors',
                 method: 'post',
