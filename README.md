@@ -10,4 +10,4 @@ I am currently working to get the app on the Chrome store, but to try the extens
 4. Navigate to www.eventbrite.com to create an event.
 5. Once you have filled in the relevant event information, click the BritePrice icon next to the address bar in the browser. Select additional features and submit to obtain a suggested ticket price for your event.
 
-The model is held on an AWS EC2 instance and is accessed through a proxy.
+The model is hosted on an AWS EC2 instance and is accessed through a proxy.
