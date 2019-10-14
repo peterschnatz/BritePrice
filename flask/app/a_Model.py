@@ -116,7 +116,7 @@ def ModelIt(event):
 	event_data['donation_0.0'] = 0
 	event_data['on_sale_status_SOLD_OUT'] = 1
 
-	pkl_filename = './app/RightPrice_model.pkl'
+	pkl_filename = './app/BritePrice_RF_model.pkl'
 	scaler_pkl = './app/StandardScaler.pkl'
 
 	with open(pkl_filename, 'rb') as file:
