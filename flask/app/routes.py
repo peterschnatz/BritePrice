@@ -6,20 +6,15 @@ from app.a_Model import ModelIt
 @flask_instance.route('/', methods=['POST', 'GET'])
 @flask_instance.route('/index', methods=['POST', 'GET'])
 def form_example():
-	if request.method == 'POST':  #this block is only entered when the form is submitted
-		# print(request)
+	if request.method == 'POST':  
 
-		print("in routes")
-
-# This is new stuff. Everything above 
+		# Assign data
 		data = request.get_json(force=True)
 
-		print(data)
-        #### Model goes here 
-		print('here')
+		# Use model to output suggested ticket price based on data
 		theResult = round(float(ModelIt(data)),2)
-		print('here2')
-		print(theResult)
+
+		# Return suggested ticket price
 		return '$%.2f' %theResult
         
 

@@ -1,11 +1,12 @@
+import numpy as np
+import pandas as pd
+import datetime as dt
+import pickle
+import sklearn
+from joblib import load
+
 def ModelIt(event):
 	# result = title.upper()
-	import numpy as np
-	import pandas as pd
-	import datetime as dt
-	import pickle
-	import sklearn
-	from joblib import load
 
 
 	# define an empty list
