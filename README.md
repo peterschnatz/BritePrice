@@ -1,5 +1,7 @@
 # BritePrice
 
+## This repo is no longer operable due to the deprecation of the EventBrite Event Search API
+
 BritePrice is a Google Chrome Extension that guides Eventbrite event organizers in pricing the tickets for their events.
 
 A short slide show about the project can be found here: [BritePrice](https://docs.google.com/presentation/d/e/2PACX-1vTvGIe91WIIA4MvmI4n5xozLVZqxJ57QSTpde6_zIueW88ejLvdv4XZVOtU8Kx64Er1vgVkgOZpsaTx/pub?start=false&loop=false&delayms=3000 "BritePrice Demo")
